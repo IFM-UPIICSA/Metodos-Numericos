@@ -5,21 +5,38 @@
 ##############################################
 
 # imports
-import numpy as np
+import numpy
 
     #Declaraciones
 # Matriz de coeficientes
-A = np.array( [ [2.56,1.6,1],[3.24,1.8,1],[1.96,1.4,1] ], np.int32)
+A = [ [ 2.56, 1.6, 1], [ 3.24, 1.8, 1], [ 1.96, 1.4, 1] ]
 # Matriz de resultados
-b = np.array([1.6487,2.7182,1], np.int32)
+b = [1.6487,2.7182,1]
 
     # Resolución de la matriz
-# Verificar que la determinante no sea cero
-if((np.linalg.det(A))!=0.0): 
-    # Generación de matriz inversa
-    B = np.linalg.inv(A)
-    # Calcular la solución de la matriz
-    print(np.dot(B, b))
-else:
-    print("\nLa matriz de coeficientes es singular\n")
-    print("Por lo que no se puede encontrar una solución")
+def gaussJordan(matriz, vector):
+
+    matrix = numpy.array(matriz, dtype=numpy.float64)
+    vector = numpy.array(vector, dtype=numpy.float64)
+
+    m = len(vector)
+    x = numpy.zeros(m)
+
+    for k in range(0, m):
+        for r in range(k+1, m):
+            factor=(matrix[r,k]/matrix[k,k])
+            vector[r]=vector[r]-(factor*vector[k])
+            for c in range(0,m):
+                matrix[r,c]=matrix[r,c]-(factor*matrix[k,c])
+
+    x[m-1]=vector[m-1]/matrix[m-1, m-1]
+
+    for r in range(m-2, -1, -1):
+        suma = 0
+        for c in range(0,m):
+            suma=suma+matrix[r,c]*x[c]
+        x[r]=(vector[r]-suma)/matrix[r, r]  
+    return x
+    
+R = (gaussJordan(A, b))
+print(R)
