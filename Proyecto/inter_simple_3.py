@@ -8,14 +8,12 @@
 import numpy
 from metodos.gauss_method import gaussJordan
 
-###    Declaraciones
 #Matriz de coeficientes
 A = [[ 4.0960, 2.56, 1.6, 1] , [5.8320, 3.24, 1.8, 1], [ 2.7440, 1.96, 1.4, 1], [8, 4, 2, 1]]
 # Matriz de resultados
 b = [1.6487,2.7182,1, 7.3891]
 # Valor a calcular
 x = 1.9
-###
 
     # Resolución de la matriz por Gauss Jordan
 R = (gaussJordan(A, b))
