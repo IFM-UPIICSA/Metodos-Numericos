@@ -1,64 +1,72 @@
-################################     
-        #Var asignation
-    # Value matrix
-row0=[4,-1,1,3]
-row1=[2,1,5,3]
-row2=[-1,4,1,-2]
-matrix=[row0,row1,row2]
-
+    #imports
+import numpy as np
+from metodos.solitud_datos import sol_tabla_33
     #Diferent Values
-VLI = False  # VALIDATE LINEAL INDEPENDENCE
+change = []
 VLI_items = [False,False,False]
-
-#################################
-        # Functions
-
-    # Print matrix
-def Printmatrix():
-    print ("\tOrigninal Matrix")
-    for i in range(3):
-        for j in range(4):
-            if j!=3: print(str(matrix[i][j]),"\t", end="")
-            else: print("=\t",str(matrix[i][j]))        
-    print("",end="\n")
-    
+ 
     #Error message by item, number, descripcions
-def MensajesError(ele,num,error):
-    print(ele,num,error)
+def MensajesError(num):
+    print("La fila ",num," no cumple la regla de linealidad")
 
     # Linealmente independiente
-def VerifyLinealIndep():    
-        #Validate zero Column
-    if ( (abs(matrix[0][0])) < (( abs(matrix[0][1]) + abs(matrix[0][2]) )) ):
-        MensajesError("La fila ",0," no cumple la regla de linealidad")
+def VerifyLinealIndep():   
+    print() 
+        #Validate Column zero
+    if ( (abs(tabla[0][0])) < ( abs(tabla[0][1]) + abs(tabla[0][2])) ):
+        MensajesError(0)
         VLI_items[0] = False
+        change.append(0)
     else: VLI_items[0] = True
 
-        #Validate first Column
-    if ( (abs(matrix[1][1])) < (( abs(matrix[1][0]) + abs(matrix[1][2]) )) ):
-        MensajesError("La fila ",1," no cumple la regla de linealidad")
+        #Validate Column one
+    if ( (abs(tabla[1][1])) < ( abs(tabla[1][0]) + abs(tabla[1][2])) ):
+        MensajesError(1)
         VLI_items[1] = False
+        change.append(1)
     else: VLI_items[1] = True
-        
-        #Validate second Column
-    if ( (abs(matrix[2][2])) < (( abs(matrix[2][0]) + abs(matrix[2][1]) )) ):
-        MensajesError("La fila ",2," no cumple la regla de linealidad")
+
+        #Validate Column two
+    if ( (abs(tabla[2][2])) < ( abs(tabla[2][1]) + abs(tabla[2][0])) ):
+        MensajesError(2)
         VLI_items[2] = False
+        change.append(2)
     else: VLI_items[2] = True
 
+def VerifyAllLinealIndep():
         #Validate All rows
-    if ( (VLI_items[0]==True) and (VLI_items[1]==True) and (VLI_items[2]==True) ): VLI = True
+    if ( (VLI_items[0]==True) and (VLI_items[1]==True) and (VLI_items[2]==True) ): 
+        return True
+    else: 
+        return False
 
     #Try to fix order of matrix
 def RepairIndependence():
-    print("Some goint to happend here")
+    for i in range(0,3):
+        temp = tabla[change[0]][i]
+        tabla[change[0]][i] = tabla[change[1]][i]
+        tabla[change[1]][i] = temp
+    print("\nTabla con intercambio de filas")
+    print(tabla)
 
-
-################################
-        #main
-    # funtions calls
-Printmatrix()
-while (VLI==False):
+def main():
     VerifyLinealIndep()
-    if VLI==False:
-        RepairIndependence()
+    if VerifyAllLinealIndep() == True:
+        print("\nLa matriz cumple la regla de linealidad")
+    else: 
+        if(len(change)%2 == 0):
+            RepairIndependence()
+            VerifyLinealIndep()
+            if VerifyAllLinealIndep() == True:
+                print("\nLa matriz cumple la regla de linealidad\n")
+            else: 
+                print("\nLa matriz no cumple la regla de linealidad, no pudo ser reparada por lo que no tiene solución por jacobic")    
+        else:
+            print("\nLa matriz no cumple la regla de linealidad, y dados sus valores no tiene solución por jacobic")
+
+#Main
+print("\n\tMetodo de Jacobic\n")
+tabla = sol_tabla_33()
+print("\nTabla de datos")
+print(tabla)
+main()

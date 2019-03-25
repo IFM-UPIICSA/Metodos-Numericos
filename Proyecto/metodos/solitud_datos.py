@@ -8,9 +8,19 @@ def sol_Value_Calcular():
     y = (input("Ingrese el valor a calcular: "))
     return y
 
-def sol_tabla(n_Datos):
+# tabla(2,n)
+def sol_tabla_2n(n_Datos):
     tabla = np.zeros((2,n_Datos))
     for i in range(0,n_Datos):
         tabla[0][i] = input(f"Ingrese el valor de X{i}: ")
         tabla[1][i] = input(f"Ingrese el valor de Y{i}: ")
     return tabla
+
+# tabla(3,3)
+def sol_tabla_33():
+    table = np.zeros((3,3))
+    for i in range(0,3):
+        table[0][i] = input(f"Ingrese el valor de X{i}: ")
+        table[1][i] = input(f"Ingrese el valor de Y{i}: ")
+        table[2][i] = input(f"Ingrese el valor de Z{i}: ")
+    return table
