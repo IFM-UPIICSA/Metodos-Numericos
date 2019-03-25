@@ -4,6 +4,8 @@ from metodos.solitud_datos import sol_tabla_33, sol_array_3
     #Diferent Values
 change = []
 VLI_items = [False,False,False]
+tabla_cal = np.zeros((9,3))
+tabla_err = np.zeros((9,3))
  
     #Error message by item, number, descripcions
 def MensajesError(num):
@@ -75,7 +77,38 @@ def main():
             return False
 
 def calc_inc():
-    x1 = 1
+    x = []
+    x.append(( ( tabla_res[0] + ((-1)*(tabla_mat[0][1])) + ((-1)*(tabla_mat[0][2])) ) ) / (tabla_mat[0][0]))
+    x.append(( ( tabla_res[1] + ((-1)*(tabla_mat[1][0])) + ((-1)*(tabla_mat[0][2])) ) ) / (tabla_mat[1][1]))
+    x.append(( ( tabla_res[2] + ((-1)*(tabla_mat[2][0])) + ((-1)*(tabla_mat[2][1])) ) ) / (tabla_mat[2][2]))
+    print ("X1= ",x[0])
+    print ("X2= ",x[1])
+    print ("X3= ",x[2])
+    return (x)
+
+def calc_tabla(x):
+        #declaraciones
+    tabla_cal[1][0] = x[0]
+    tabla_cal[1][1] = x[1]
+    tabla_cal[1][2] = x[2]
+    tabla_err[1][0] = 1
+    tabla_err[1][1] = 1
+    tabla_err[1][2] = 1
+        #calculos rangos
+    for i in range(2,9):
+        tabla_cal[i][0] = ( ( tabla_res[0] - ((tabla_mat[0][1])*(tabla_cal[i-1][1])) - ((tabla_mat[0][2])*(tabla_cal[i-1][2])) ) / (tabla_mat[0][0]) )
+        tabla_cal[i][1] = ( ( tabla_res[1] - ((tabla_mat[1][0])*(tabla_cal[i-1][0])) - ((tabla_mat[1][2])*(tabla_cal[i-1][2])) ) / (tabla_mat[1][1]) )
+        tabla_cal[i][2] = ( ( tabla_res[2] - ((tabla_mat[2][0])*(tabla_cal[i-1][0])) - ((tabla_mat[2][1])*(tabla_cal[i-1][1])) ) / (tabla_mat[2][2]) )
+        #calculos error
+    for j in range(2,9):
+        tabla_err[j][0] = abs( (tabla_cal[j-1][0] - tabla_cal[j][0])  / (tabla_cal[j][0]) )
+        tabla_err[j][1] = abs( (tabla_cal[j-1][1] - tabla_cal[j][1])  / (tabla_cal[j][1]) )
+        tabla_err[j][2] = abs( (tabla_cal[j-1][2] - tabla_cal[j][2])  / (tabla_cal[j][2]) )
+        #concatenar tabla
+    tabla_fin = np.concatenate((tabla_cal,tabla_err), axis=1)
+        #Impresion tabla
+    print("\n\t\tTabla de Xs\t\t\tTabla de Error")
+    print(tabla_fin)
 
 #Main
 print("\n\tMetodo de Jacobic\n")
@@ -86,4 +119,4 @@ print(tabla_mat)
 print("\nTabla de resultados")
 print(tabla_res)
 if(main()==True):
-    print("Pasaron")
+    calc_tabla(calc_inc())
