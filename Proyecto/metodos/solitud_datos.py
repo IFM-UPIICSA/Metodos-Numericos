@@ -21,9 +21,9 @@ def sol_tabla_33():
     table = np.zeros((3,3))
     for i in range(0,3):
         print()
-        table[0][i] = input(f"Ingrese el valor de X{i}: ")
-        table[1][i] = input(f"Ingrese el valor de Y{i}: ")
-        table[2][i] = input(f"Ingrese el valor de Z{i}: ")
+        table[i][0] = input(f"Ingrese el valor de X{i}: ")
+        table[i][1] = input(f"Ingrese el valor de Y{i}: ")
+        table[i][2] = input(f"Ingrese el valor de Z{i}: ")
     return table
 
 def sol_array_3():

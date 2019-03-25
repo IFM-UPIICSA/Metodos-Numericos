@@ -7,14 +7,14 @@
 # imports
 import numpy as np
 from metodos.gauss_method import gaussJordan
-from metodos.solitud_datos import *
+from metodos.solitud_datos import sol_tabla_2n, sol_No_Datos, sol_Value_Calcular
 from metodos.calcular_matrices import *
 
 #Ingresar el maximo grado de polinomio a calcular
 Ngrado = sol_No_Datos()
 #Solicitud de datos
 print()
-tabla = sol_tabla(Ngrado)
+tabla = sol_tabla_2n(Ngrado)
 print("\nTabla de datos")
 print(tabla)
 #definir las matrices
