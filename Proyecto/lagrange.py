@@ -55,16 +55,28 @@ def main():
 
         #Calcular x^2
     X2 = 0
-    for ii in range(0,pun_Con):
-        X2 += VR[ii]
+    for k in range(0,pun_Con):
+        X2 += VR[k]
     
         #Calcular x^1
-    
-
+    X1 = 0
+    for jj in range(0,pun_Con):
+        temp2 = 0
+        for kk in range(0,pun_Con):
+            if(jj!=kk): temp2 -= ( datos[0][kk] )
+        X1 += (temp2*VR[jj])        
 
         #Calcular x^0
-    
+    X0 = 0
+    for ij in range(0,pun_Con):
+        temp3 = 1
+        for jk in range(0,pun_Con):
+            if(ij!=jk): temp3 *= ( -datos[0][jk] )
+        X0 += (temp3*VR[ij])  
+
         #Imprimir resultados
     print("\nX^2 : ",X2)
+    print("X^1 : ",X1)
+    print("X^0 : ",X0)
     #main
 main()
