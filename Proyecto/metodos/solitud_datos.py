@@ -5,6 +5,7 @@ def sol_No_Datos():
     return num_Datos
 
 def sol_Value_Calcular():
+    print()
     y = (input("Ingrese el valor a calcular: "))
     return y
 

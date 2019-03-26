@@ -26,7 +26,7 @@ def main():
         datos[1,i] = float(input(f"Ingrese Y{i}: "))
 
         #Solicitud del valor a calcular
-    pun_des = sol_Value_Calcular() 
+    pun_des = float(sol_Value_Calcular())
 
         #Estructuración de valores
     for i in range(len(datos[0])):
