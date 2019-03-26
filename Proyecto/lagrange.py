@@ -40,6 +40,31 @@ def main():
         resultado.append(prod(lfun[i])*datos[1,i])
 
     res = sum(resultado)
-    print ("\nResultado: Y para X =",pun_des," :",round(res,9))
+    print ("\nResultado: Y para X =",pun_des," :",round(res,9),"\n\n")
+
+        #Calcular Polinomio de la tabla
+    print("\t\t\tCalculo del polinomio de la tabla")
+    VR = []
+    for i in range(0,pun_Con):
+        temp = 1
+        for j in range(0,pun_Con):
+            if(i!=j): temp *= ((datos[0][i])-(datos[0][j]))
+        VR.append( (datos[1][i]) / (temp) ) 
+    print("VR")
+    print(VR)
+
+        #Calcular x^2
+    X2 = 0
+    for ii in range(0,pun_Con):
+        X2 += VR[ii]
+    
+        #Calcular x^1
+    
+
+
+        #Calcular x^0
+    
+        #Imprimir resultados
+    print("\nX^2 : ",X2)
     #main
 main()
