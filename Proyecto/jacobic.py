@@ -1,6 +1,6 @@
     #imports
 import numpy as np
-from metodos.solitud_datos import sol_tabla_33, sol_array_3
+from funciones.solitud_datos import sol_tabla_33, sol_array_3
     #Diferent Values
 change = []
 VLI_items = [False,False,False]
