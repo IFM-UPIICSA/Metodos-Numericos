@@ -52,7 +52,7 @@ for i in range(grade-1,-1,-1):
             temp += ( function_value[i] * (X1[contador]**i))
         else:
             temp += (function_value[i])
-fX1.append(temp)
+fX1.append(temp) #Incrustar en el array
     #Calcular f(X2)
 temp = 0
 for i in range(grade-1,-1,-1):
@@ -120,17 +120,23 @@ while ( error_value[contador-1] > (5/(10**fix_value))):
     error_value.append(abs(fXmedia[contador]))
         #Incrementar contador  
     contador = contador+1
-
-    """    #Imprimir iteracion
-    print(contador,"\t",round(x1,fix_value),"\t",round(x2,fix_value),"\t",round(Xmedia,fix_value),"\t",round(fX1,fix_value),"\t",round(fX2,fix_value),"\t",round(fXmedia,fix_value),"\t\t",round(error_value,fix_value))
-    if(fXmedia < 0):
-        x1 = Xmedia
-    else:
-        x2 = Xmedia
-    """
-
+        ################ Finaliza el while
+    #Crear y llenar tabla
+tabla = []
+for i in range(len(error_value)):
+    temp1 = round(X1[i],fix_value)
+    temp2 = round(X2[i],fix_value)
+    temp3 = round(Xmedia[i],fix_value)
+    temp4 = round(fX1[i],fix_value)
+    temp5 = round(fX2[i],fix_value+1)
+    temp6 = round(fXmedia[i],fix_value+1)
+    temp7 = round(error_value[i],fix_value+1)
+        #agregar al array
+    tabla.append([i, temp1, temp2, temp3, temp4, temp5, temp6, temp7])
     #Barra titular
-print("n\t\tX1\t\tX2\tXmedia\tf(X1)\tf(X2)\tf(Xmedia)\tError |f(Xmedia)|")
-print(*X1,sep = "\n")
-print("\n")
-print(error_value)
+print("\n\t\tResultado:")
+print("\nn\tX1\tX2\tXmedia\tf(X1)\tf(X2)\tf(Xmedia)\tError |f(Xmedia)|\n")
+    #Imprimir tabla
+for i in range(len(X1)-1):
+    print(tabla[i])
+print("\n"*3) #Espaciado
