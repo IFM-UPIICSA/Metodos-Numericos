@@ -33,49 +33,104 @@ print("\n\tLimites: \n[",x1,",",x2,"]")
 fix_value= (int(input("\nIngrese el fix: ")))
         #Calcular y mostrar las iteraciones
     #Definicion de variables
-error_value = 1
 contador = 0
-    #Barra titular
-print("n\tX1\t\tX2\tXmedia\tf(X1)\tf(X2)\tf(Xmedia)\tError |f(Xmedia)|")
+X1 = []
+X2 = []
+Xmedia = []
+fX1 = []
+fX2 = []
+fXmedia = []
+error_value = []
+    #Primeros calculos
+X1.append(x1)
+X2.append(x2)
+Xmedia.append((x1+x2)/2)
+    #Calcular f(X1)
+temp = 0
+for i in range(grade-1,-1,-1):
+        if(i!=0):
+            temp += ( function_value[i] * (X1[contador]**i))
+        else:
+            temp += (function_value[i])
+fX1.append(temp)
+    #Calcular f(X2)
+temp = 0
+for i in range(grade-1,-1,-1):
+        if(i!=0):
+            temp += ( function_value[i] * (X2[contador]**i))
+        else:
+            temp += (function_value[i])
+fX2.append(temp)
+    #Calcular f(Xmedia)
+temp = 0
+for i in range(grade-1,-1,-1):
+        if(i!=0):
+            temp += ( function_value[i] * (Xmedia[contador]**i))
+        else:
+            temp += (function_value[i])
+fXmedia.append(temp)
+    #Actualizar valores
+if(fXmedia[contador] < 0):
+    X1.append(Xmedia[contador])
+    X2.append(X2[contador])
+else:
+    X2.append(Xmedia[contador])
+    X1.append(X1[contador])
+    #Calcular el error
+error_value.append(abs(fXmedia[0]))
+    #Incrementar contador  
+contador = contador+1
+
     #Iteraciones
-while ( error_value > (5/(10**fix_value))):
-        #Init values
-    Xmedia = 0
-    fX1 = 0
-    fX2 = 0
-    fXmedia = 0
+while ( error_value[contador-1] > (5/(10**fix_value))):
         #Calcular Xmedia
-    Xmedia = ( (x1+x2) / 2 )
+    Xmedia.append((X1[contador]+X2[contador])/2)
         #Calcular fx1
+    temp = 0
     for i in range(grade-1,-1,-1):
         if(i!=0):
-            fX1 += ( function_value[i] * (x1**i))
+            temp += ( function_value[i] * (X1[contador]**i))
         else:
-            fX1 += (function_value[i])
-
+            temp += (function_value[i])
+    fX1.append(temp)
         #Calcular fx2
+    temp = 0
     for i in range(grade-1,-1,-1):
         if(i!=0):
-            fX2 += ( function_value[i] * (x2**i))
+            temp += ( function_value[i] * (X2[contador]**i))
         else:
-            fX2 += (function_value[i])
-
-        #Calcular fXmedai
+            temp += (function_value[i])
+    fX2.append(temp)
+        #Calcular fXmedia
+    temp = 0
     for i in range(grade-1,-1,-1):
         if(i!=0):
-            fXmedia += ( function_value[i] * (Xmedia**i))
+            temp += ( function_value[i] * (Xmedia[contador]**i))
         else:
-            fXmedia += (function_value[i])
-
+            temp += (function_value[i])
+    fXmedia.append(temp)
+        #Actualizar valores
+    if(fXmedia[contador] < 0):
+        X1.append(Xmedia[contador])
+        X2.append(X2[contador])
+    else:
+        X2.append(Xmedia[contador])
+        X1.append(X1[contador])
         #Calcular error
-    error_value = abs(fXmedia)
+    error_value.append(abs(fXmedia[contador]))
+        #Incrementar contador  
+    contador = contador+1
 
-        #Imprimir iteracion
+    """    #Imprimir iteracion
     print(contador,"\t",round(x1,fix_value),"\t",round(x2,fix_value),"\t",round(Xmedia,fix_value),"\t",round(fX1,fix_value),"\t",round(fX2,fix_value),"\t",round(fXmedia,fix_value),"\t\t",round(error_value,fix_value))
     if(fXmedia < 0):
         x1 = Xmedia
     else:
         x2 = Xmedia
-    
-    contador = contador+1
-    
+    """
+
+    #Barra titular
+print("n\t\tX1\t\tX2\tXmedia\tf(X1)\tf(X2)\tf(Xmedia)\tError |f(Xmedia)|")
+print(*X1,sep = "\n")
+print("\n")
+print(error_value)
