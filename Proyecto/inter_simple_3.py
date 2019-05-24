@@ -6,7 +6,7 @@
 
 # imports
 import numpy
-from metodos.gauss_method import gaussJordan
+from funciones.gauss_method import gaussJordan
 
 #Matriz de coeficientes
 A = [[ 4.0960, 2.56, 1.6, 1] , [5.8320, 3.24, 1.8, 1], [ 2.7440, 1.96, 1.4, 1], [8, 4, 2, 1]]

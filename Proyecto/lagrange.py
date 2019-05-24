@@ -1,7 +1,7 @@
 # Interpolacion polinomica de Lagrange
     #Imports
 import numpy as np
-from metodos.solitud_datos import sol_Value_Calcular
+from funciones.solitud_datos import sol_Value_Calcular
 
 print("\n\tINTERPOLACION POLINOMICA DE LAGRANGE\n\n")
 
