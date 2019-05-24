@@ -32,3 +32,13 @@ def sol_array_3():
     for j in range(0,3):
         b[j] = input(f"Ingrese el valor de b{j}: ")
     return b
+
+def function_grade_n(grade):
+    funtion_object = np.zeros((grade))
+    for i in range(grade-1,-1,-1):
+        if(i!=0):
+            print("Ingrese el valor para X^",i)
+        else:
+            print("Ingrese el valor para el termino independiente")
+        funtion_object[i] = int(input()) 
+    return funtion_object
