@@ -1,8 +1,7 @@
 import numpy as np
 
 def sol_No_Datos():
-    num_Datos = int(input("Ingresa el número de datos: "))
-    return num_Datos
+    return (int(input("Ingresa el número de datos: ")))
 
 def sol_Value_Calcular():
     print()
