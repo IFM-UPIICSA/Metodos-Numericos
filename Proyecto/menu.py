@@ -3,6 +3,18 @@
 from bisecciones import Bisecciones
 from aprox_suces import AproxSuces
 from newton_raphson import NewtonRaphson
+    #Interpolacion
+from poli_newton import PoliNewton
+
+from method_estadistico import MethodEstadistico
+from splines_cubicos import SplinesCubicos
+    #Integracion Numerica
+from trapecio import Trapecio
+from simpson_1_3 import Simpson1_3
+from simpson_3_8 import Simpson3_8
+    #Ecuaciones Diferenciales
+from euler import Euler
+
         #Metodos
 def presentacion():
         #Presentacion
@@ -17,20 +29,42 @@ def menu_general(): #Opciones de Menu General
     return int(input("Seleccione el tema:\n\n\t1. Raices de Ecuaciones por metodos numericos\n\t2. Sistemas Lineales de Ecuaciones\n\t3. Interpolacion\n\t4. Integracion Numerica\n\t5. Ecuaciones Diferenciales\n\t6. Salir\nR: "))
 
 def menu_1(): #Raices de ecuaciones
-        #Seleccionar alguno
     tema = int(input("\nRaices de Ecuaciones por metodos numericos:\n\t1. Bisecciones\n\t2. Aproximaciones Sucesivas\n\t3. Newton Raphson\nR: "))
         #Buscarlo
     if(tema==1): Bisecciones()
     elif(tema==2): AproxSuces()
-    elif(tema==3): NewtonRaphson
+    elif(tema==3): NewtonRaphson()
     else: print("Ingrese un valor valido")
 
 def menu_2(): #Sistemas Lineales de Ecuaciones
-        #Seleccionar alguno
     tema = int(input("\nSistemas Lineales de Ecuaciones:\n\t1. Jacobic\n\t2. Gauss Jordan\nR: "))
         #Buscarlo
     if(tema==1): print("Entro a Jacobic")
     elif(tema==2): print("Entro a Gauss Jordan")
+    else: print("Ingrese un valor valido")
+
+def menu_3(): #Interpolacion
+    tema = int(input("\nInterpolacion:\n\t1. Simple\n\t2. Polinomio de Newton\n\t3. Lagrange\n\t.4 Metodo Estadistico\n\t5. Splines Cubicos\nR: "))
+        #Buscarlo
+    if(tema==1): print("Entro a Interpolacion Simple")
+    elif(tema==2): PoliNewton()
+    elif(tema==3): print("Entro a Lagrange")
+    elif(tema==4): MethodEstadistico()
+    elif(tema==5): SplinesCubicos()
+    else: print("Ingrese un valor valido")
+
+def menu_4(): #Integracion Numerica
+    tema = int(input("\nIntegracion Numerica:\n\t1. Trapecio\n\t2. Simpson 1/3\n\t3. Simpson 3/8\nR: "))
+        #Buscarlo
+    if(tema==1): Trapecio
+    elif(tema==2): Simpson1_3()
+    elif(tema==3): Simpson3_8()
+    else: print("Ingrese un valor valido")
+
+def menu_5(): #Ecuaciones Diferenciales
+    tema = int(input("\nEcuaciones Diferenciales:\n\t1. Euler\nR: "))
+        #Buscarlo
+    if(tema==1): Euler()
     else: print("Ingrese un valor valido")
 
 def main():
@@ -41,13 +75,13 @@ def main():
         if(resul == 1 ):
             menu_1()
         elif(resul==2):
-            break
+            menu_2()
         elif(resul==3):
-            break
+            menu_3()
         elif(resul==4):
-            break
+            menu_4()
         elif(resul==5):
-            break
+            menu_5()
         elif(resul==6):
             break    
         else:
