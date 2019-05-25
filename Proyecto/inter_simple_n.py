@@ -4,37 +4,36 @@
 # Solución de cualquier grado de intepolación 
 ##############################################
 
-# imports
+    # imports
 import numpy as np
 from funciones.gauss_method import gaussJordan
 from funciones.solitud_datos import sol_tabla_2n, sol_No_Datos, sol_Value_Calcular
 from funciones.calcular_matrices import *
 
-#Ingresar el maximo grado de polinomio a calcular
-Ngrado = sol_No_Datos()
-#Solicitud de datos
-print()
-tabla = sol_tabla_2n(Ngrado)
-print("\nTabla de datos")
-print(tabla)
-#definir las matrices
-print("\nMatriz A")
-A = np.array(sol_Array(tabla,Ngrado), dtype=np.float64)
-print(A)
-b = np.array(sol_Res(tabla,Ngrado), dtype=np.float64)
-print()
-print("Matriz b")
-print(b)
-#solicitar el valor a calcular
-print()
-x = sol_Value_Calcular()
+def InterSimple():
+    #Ingresar el maximo grado de polinomio a calcular
+    Ngrado = sol_No_Datos()
+    #Solicitud de datos
+    tabla = sol_tabla_2n(Ngrado)
+    print("\n\nTabla de datos")
+    print(tabla)
+    #definir las matrices
+    print("\nMatriz A")
+    A = np.array(sol_Array(tabla,Ngrado), dtype=np.float64)
+    print(A)
+    b = np.array(sol_Res(tabla,Ngrado), dtype=np.float64)
+    print("\nMatriz b")
+    print(b)
+    #solicitar el valor a calcular
+    print()
+    x = sol_Value_Calcular()
 
-    # Resolución de la matriz por Gauss Jordan
-R = (gaussJordan(A, b))
-print("\nSolición de la matriz por Gauss Jordan")
-print(R)
+        # Resolución de la matriz por Gauss Jordan
+    R = (gaussJordan(A, b))
+    print("\nSolición de la matriz por Gauss Jordan")
+    print(R)
 
-#Calcular valor en función del polinomio más adecuado
-Res = 0
-for i in range(0, Ngrado): Res += (R[i]*pow(float(x),Ngrado-i-1))
-print("\nResultado del polinomio ", round(Res,9),"\n")
+    #Calcular valor en función del polinomio más adecuado
+    Res = 0
+    for i in range(0, Ngrado): Res += (R[i]*pow(float(x),Ngrado-i-1))
+    print("\nResultado del polinomio ", round(Res,9),"\n")

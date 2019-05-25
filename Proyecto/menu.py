@@ -3,9 +3,13 @@
 from bisecciones import Bisecciones
 from aprox_suces import AproxSuces
 from newton_raphson import NewtonRaphson
+    #Sistemas Lineales de Ecuaciones
+#from jacobic import Jacobic
+from funciones.gauss_method import gaussJordan
     #Interpolacion
+from inter_simple_n import InterSimple
 from poli_newton import PoliNewton
-
+from lagrange import Lagrange
 from method_estadistico import MethodEstadistico
 from splines_cubicos import SplinesCubicos
     #Integracion Numerica
@@ -17,7 +21,6 @@ from euler import Euler
 
         #Metodos
 def presentacion():
-        #Presentacion
     print("\n\n" + ("*"*40))
     print("*" + (" "*38 + "*"))
     print("*" + (" "*13) + "SerMath MN" + (" "*15) + "*")
@@ -46,9 +49,9 @@ def menu_2(): #Sistemas Lineales de Ecuaciones
 def menu_3(): #Interpolacion
     tema = int(input("\nInterpolacion:\n\t1. Simple\n\t2. Polinomio de Newton\n\t3. Lagrange\n\t.4 Metodo Estadistico\n\t5. Splines Cubicos\nR: "))
         #Buscarlo
-    if(tema==1): print("Entro a Interpolacion Simple")
+    if(tema==1): InterSimple()
     elif(tema==2): PoliNewton()
-    elif(tema==3): print("Entro a Lagrange")
+    elif(tema==3): Lagrange()
     elif(tema==4): MethodEstadistico()
     elif(tema==5): SplinesCubicos()
     else: print("Ingrese un valor valido")
@@ -67,8 +70,8 @@ def menu_5(): #Ecuaciones Diferenciales
     if(tema==1): Euler()
     else: print("Ingrese un valor valido")
 
-def main():
-    while True: #iterar
+def main(): #metodo que inicia la ejecucion
+    while True: #iteraciones
         presentacion() #mostrar presentacion
         resul = menu_general() #obtener opcion
             #Buscarla

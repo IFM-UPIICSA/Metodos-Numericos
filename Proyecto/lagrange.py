@@ -3,15 +3,14 @@
 import numpy as np
 from funciones.solitud_datos import sol_Value_Calcular
 
-print("\n\tINTERPOLACION POLINOMICA DE LAGRANGE\n\n")
-
 def prod(A):
     a = 1
     for i in range(len(A)):
         a = a*A[i]
     return a
 
-def main():
+def Lagrange():
+    print("\n\tINTERPOLACION POLINOMICA DE LAGRANGE\n\n")
         #Definir matrices
     pun_Con = int(input("Ingrese cantidad de datos conocidos > 2: "))
     datos = np.arange(pun_Con*2,dtype=float)
@@ -78,5 +77,3 @@ def main():
     print("\nX^2 : ",X2)
     print("X^1 : ",X1)
     print("X^0 : ",X0)
-    #main
-main()
