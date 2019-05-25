@@ -18,7 +18,6 @@ from simpson_1_3 import Simpson1_3
 from simpson_3_8 import Simpson3_8
     #Ecuaciones Diferenciales
 from euler import Euler
-
         #Metodos
 def presentacion():
     print("\n\n" + ("*"*40))
@@ -33,7 +32,6 @@ def menu_general(): #Opciones de Menu General
 
 def menu_1(): #Raices de ecuaciones
     tema = int(input("\nRaices de Ecuaciones por metodos numericos:\n\t1. Bisecciones\n\t2. Aproximaciones Sucesivas\n\t3. Newton Raphson\nR: "))
-        #Buscarlo
     if(tema==1): Bisecciones()
     elif(tema==2): AproxSuces()
     elif(tema==3): NewtonRaphson()
@@ -41,14 +39,12 @@ def menu_1(): #Raices de ecuaciones
 
 def menu_2(): #Sistemas Lineales de Ecuaciones
     tema = int(input("\nSistemas Lineales de Ecuaciones:\n\t1. Jacobic\n\t2. Gauss Jordan\nR: "))
-        #Buscarlo
     if(tema==1): print("Entro a Jacobic")
     elif(tema==2): print("Entro a Gauss Jordan")
     else: print("Ingrese un valor valido")
 
 def menu_3(): #Interpolacion
-    tema = int(input("\nInterpolacion:\n\t1. Simple\n\t2. Polinomio de Newton\n\t3. Lagrange\n\t.4 Metodo Estadistico\n\t5. Splines Cubicos\nR: "))
-        #Buscarlo
+    tema = int(input("\nInterpolacion:\n\t1. Simple\n\t2. Polinomio de Newton\n\t3. Lagrange\n\t4. Metodo Estadistico\n\t5. Splines Cubicos\nR: "))
     if(tema==1): InterSimple()
     elif(tema==2): PoliNewton()
     elif(tema==3): Lagrange()
@@ -58,8 +54,7 @@ def menu_3(): #Interpolacion
 
 def menu_4(): #Integracion Numerica
     tema = int(input("\nIntegracion Numerica:\n\t1. Trapecio\n\t2. Simpson 1/3\n\t3. Simpson 3/8\nR: "))
-        #Buscarlo
-    if(tema==1): Trapecio
+    if(tema==1): Trapecio()
     elif(tema==2): Simpson1_3()
     elif(tema==3): Simpson3_8()
     else: print("Ingrese un valor valido")
@@ -70,11 +65,13 @@ def menu_5(): #Ecuaciones Diferenciales
     if(tema==1): Euler()
     else: print("Ingrese un valor valido")
 
+def menu_6(): #Muestra mensaje de salida
+    print("\n\n\tGracias por utilizar SerMath MN\n\n")
+
 def main(): #metodo que inicia la ejecucion
     while True: #iteraciones
         presentacion() #mostrar presentacion
         resul = menu_general() #obtener opcion
-            #Buscarla
         if(resul == 1 ):
             menu_1()
         elif(resul==2):
@@ -86,6 +83,7 @@ def main(): #metodo que inicia la ejecucion
         elif(resul==5):
             menu_5()
         elif(resul==6):
+            menu_6()
             break    
         else:
             print("Ingrese un valor valido")
