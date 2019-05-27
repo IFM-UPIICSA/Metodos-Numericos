@@ -7,13 +7,21 @@
     # imports
 import numpy as np
 from funciones.gauss_method import gaussJordan
-from funciones.solitud_datos import sol_tabla_2n, sol_No_Datos, sol_Value_Calcular
+from funciones.solitud_datos import sol_tabla_2n, sol_No_Datos, sol_Value_Calcular, enters
 from funciones.calcular_matrices import *
 
 def InterSimple():
-    #Ingresar el maximo grado de polinomio a calcular
+    print("\n"*3)
+    print("*"*33)
+    print("*"+(" "*31)+"*")
+    print("*"+(" "*6) + "Intepolacion Simple" + (" "*6)+"*")
+    print("*"+(" "*31)+"*")
+    print("*"*33)
+        #Ingresar el maximo grado de polinomio a calcular
+    enters(1)
     Ngrado = sol_No_Datos()
-    #Solicitud de datos
+        #Solicitud de datos
+    enters(1)
     tabla = sol_tabla_2n(Ngrado)
     print("\n\nTabla de datos")
     print(tabla)

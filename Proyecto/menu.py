@@ -38,8 +38,8 @@ def menu_1(): #Raices de ecuaciones
     else: print("Ingrese un valor valido")
 
 def menu_2(): #Sistemas Lineales de Ecuaciones
-    tema = int(input("\nSistemas Lineales de Ecuaciones:\n\t1. Jacobic\n\t2. Gauss Jordan\nR: "))
-    if(tema==1): print("Entro a Jacobic")
+    tema = int(input("\nSistemas Lineales de Ecuaciones:\n\t1. Jacobi\n\t2. Gauss Jordan\nR: "))
+    if(tema==1): print("Entro a Jacobi")
     elif(tema==2): print("Entro a Gauss Jordan")
     else: print("Ingrese un valor valido")
 
