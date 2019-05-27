@@ -79,6 +79,12 @@ def Calcular_A(matriz_A, grade, num_datos):
             A[i][k] = matriz_A[grade-1+i-k]
     return A
 
+def Calcular_Resultado(matriz_solve, valor_calcular, grade): #resolver por la funcion
+    grade = grade -1
+    solve = 0
+    for i in range (0, grade):
+        solve += ( matriz_solve[i] * pow(float(valor_calcular), grade-1-i) )
+    return solve
     #Inicio del Metodo
 def MethodEstadistico(): 
     Presentacion()
@@ -103,23 +109,20 @@ def MethodEstadistico():
     ImprimirTablas(tabla_completa, tabla_totales, num_datos) 
         #Calular matriz X
     matriz_X = Definir_matriz_X(tabla_totales, grade, num_datos)
-    enters(1)
-    print("Matriz X:")
+    print("\nMatriz X:")
     print(matriz_X)
-        #Calular matriz b
-    matriz_b = Definir_matriz_b(tabla_totales, grade, num_datos)
-    enters(1)
-    print("Matriz b:")
-    print(matriz_b)
         #Calcular matriz_A
     matriz_A = Calcular_A(matriz_X, grade, num_datos)
-    enters(1)
-    print("Matriz A:")
+    print("\nMatriz A:")
     print(matriz_A)
+        #Calular matriz b
+    matriz_b = Definir_matriz_b(tabla_totales, grade, num_datos)
+    print("\nMatriz b:")
+    print(matriz_b)
         #Calcular matriz de gauss
     matriz_solve = gaussJordan(matriz_A, matriz_b)
-    enters(1)
-    print("Solución de la matriz A y b por Gauss Jordan")
+    print("\nSolución de la matriz A y b por Gauss Jordan")
     print (matriz_solve)
-
-MethodEstadistico()
+        #Calcular el resultado
+    resultado = Calcular_Resultado(matriz_solve, valor_calcular, grade)
+    print("\n\n\tEl resultado es: ", resultado)
