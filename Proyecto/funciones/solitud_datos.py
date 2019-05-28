@@ -42,3 +42,6 @@ def function_grade_n(grade):
             print("Ingrese el valor para el termino independiente")
         funtion_object[i] = int(input()) 
     return funtion_object
+
+def enters(num):
+    print("\n"*num)

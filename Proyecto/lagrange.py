@@ -10,9 +10,14 @@ def prod(A):
     return a
 
 def Lagrange():
-    print("\n\tINTERPOLACION POLINOMICA DE LAGRANGE\n\n")
+    print("\n"*2)
+    print("*"*30)
+    print("*",(" "*5),"INTERPOLACION",(" "*6),"*")
+    print("*",(" "*5),"POLINOMICA",(" "*9),"*")
+    print("*",(" "*5),"DE LAGRANGE",(" "*8),"*")
+    print("*"*30)
         #Definir matrices
-    pun_Con = int(input("Ingrese cantidad de datos conocidos > 2: "))
+    pun_Con = int(input("\nIngrese cantidad de datos conocidos > 2: "))
     datos = np.arange(pun_Con*2,dtype=float)
     lfun = np.arange((pun_Con)**2,dtype=float)
     datos.shape = (2,pun_Con)
@@ -39,17 +44,17 @@ def Lagrange():
         resultado.append(prod(lfun[i])*datos[1,i])
 
     res = sum(resultado)
-    print ("\nResultado: Y para X =",pun_des," :",round(res,9),"\n\n")
+    print ("\nResultado: X =",pun_des," Y=",round(res,9),"\n\n")
 
         #Calcular Polinomio de la tabla
-    print("\t\t\tCalculo del polinomio de la tabla")
+    print("\tCalculo del polinomio de la tabla")
     VR = []
     for i in range(0,pun_Con):
         temp = 1
         for j in range(0,pun_Con):
             if(i!=j): temp *= ((datos[0][i])-(datos[0][j]))
         VR.append( (datos[1][i]) / (temp) ) 
-    print("VR")
+    print("\nVector Resultante:")
     print(VR)
 
         #Calcular x^2
@@ -74,6 +79,7 @@ def Lagrange():
         X0 += (temp3*VR[ij])  
 
         #Imprimir resultados
-    print("\nX^2 : ",X2)
+    print("\nValores de la funcion")
+    print("X^2 : ",X2)
     print("X^1 : ",X1)
     print("X^0 : ",X0)

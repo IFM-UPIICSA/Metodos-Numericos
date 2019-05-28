@@ -11,3 +11,15 @@ def sol_Res(datos,n_Datos):
     for j in range(0,n_Datos):
         b[j] = datos[1][j]
     return b
+
+def sol_tabla_nn(datos, grado, num_datos):
+    table = np.zeros((grado, grado))
+    inicial = 0
+    for i in range (0, grado):
+        for j in range (grado, -1, -1):
+            if( (i==0) and (j==0) ):
+                table[0][0] = num_datos
+            else:
+                table[i][j] = datos[0]
+
+        
