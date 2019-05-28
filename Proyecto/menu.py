@@ -50,7 +50,7 @@ def menu_3(): #Interpolacion
     else: print("Ingrese un valor valido")
 
 def menu_4(): #Integracion Numerica
-    tema = int(input("\nIntegracion Numerica:\n\t1. Trapecio\n\t2. Simpson 1/3 Simple\n\t3. Simpson 3/8\nR: "))
+    tema = int(input("\nIntegracion Numerica:\n\t1. Trapecio Simple\n\t2. Simpson 1/3 Simple\n\t3. Simpson 3/8 Simple\nR: "))
     if(tema==1): Trapecio_Simple()
     elif(tema==2): Simpson_1_3_simple()
     elif(tema==3): Simpson_3_8_Simple()
