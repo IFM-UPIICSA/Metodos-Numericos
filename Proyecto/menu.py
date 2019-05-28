@@ -1,11 +1,10 @@
         #Imports
     #Raices de ecuaciones    
 from bisecciones import Bisecciones
-from aprox_suces import AproxSuces
 from newton_raphson import NewtonRaphson
     #Sistemas Lineales de Ecuaciones
 #from jacobic import Jacobic
-from funciones.gauss_method import gaussJordan
+from gauss_jordan import GaussJordan
     #Interpolacion
 from inter_simple_n import InterSimple
 from poli_newton import PoliNewton
@@ -31,25 +30,23 @@ def menu_general(): #Opciones de Menu General
     return int(input("Seleccione el tema:\n\n\t1. Raices de Ecuaciones por metodos numericos\n\t2. Sistemas Lineales de Ecuaciones\n\t3. Interpolacion\n\t4. Integracion Numerica\n\t5. Salir\nR: "))
 
 def menu_1(): #Raices de ecuaciones
-    tema = int(input("\nRaices de Ecuaciones por metodos numericos:\n\t1. Bisecciones\n\t2. Aproximaciones Sucesivas\n\t3. Newton Raphson\nR: "))
+    tema = int(input("\nRaices de Ecuaciones por metodos numericos:\n\t1. Bisecciones\n\t2. Newton Raphson\nR: "))
     if(tema==1): Bisecciones()
-    elif(tema==2): AproxSuces()
-    elif(tema==3): NewtonRaphson()
+    elif(tema==2): NewtonRaphson()
     else: print("Ingrese un valor valido")
 
 def menu_2(): #Sistemas Lineales de Ecuaciones
     tema = int(input("\nSistemas Lineales de Ecuaciones:\n\t1. Jacobi\n\t2. Gauss Jordan\nR: "))
     if(tema==1): print("Entro a Jacobi")
-    elif(tema==2): print("Entro a Gauss Jordan")
+    elif(tema==2): GaussJordan()
     else: print("Ingrese un valor valido")
 
 def menu_3(): #Interpolacion
-    tema = int(input("\nInterpolacion:\n\t1. Simple\n\t2. Polinomio de Newton\n\t3. Lagrange\n\t4. Metodo Estadistico\n\t5. Splines Cubicos\nR: "))
+    tema = int(input("\nInterpolacion:\n\t1. Simple\n\t2. Polinomio de Newton\n\t3. Lagrange\n\t4. Metodo Estadistico\nR: "))
     if(tema==1): InterSimple()
     elif(tema==2): PoliNewton()
     elif(tema==3): Lagrange()
     elif(tema==4): MethodEstadistico()
-    elif(tema==5): SplinesCubicos()
     else: print("Ingrese un valor valido")
 
 def menu_4(): #Integracion Numerica
